@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Zap } from "lucide-react";
 
 const CTASection = () => {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Decorative backgrounds */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" 
+        />
+        <motion.div 
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" 
+        />
       </div>
 
       <div className="container relative z-10">
@@ -19,6 +27,15 @@ const CTASection = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto"
         >
+          {/* Animated wolf */}
+          <motion.div
+            animate={{ y: [-10, 10, -10], rotate: [-3, 3, -3] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="text-8xl mb-6"
+          >
+            🐺
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,10 +72,15 @@ const CTASection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button variant="hero" size="lg" className="text-lg px-10">
+              <Zap className="w-5 h-5" />
               Get Started Free
               <ArrowRight className="w-5 h-5" />
+            </Button>
+            <Button variant="hero-outline" size="lg" className="text-lg px-8">
+              See Pricing
             </Button>
           </motion.div>
 
@@ -67,10 +89,24 @@ const CTASection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="text-sm text-muted-foreground mt-4"
+            className="text-sm text-muted-foreground mt-6"
           >
             🐺 Join the pack in less than 60 seconds
           </motion.p>
+
+          {/* Trust indicators */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-wrap items-center justify-center gap-6 mt-8 text-sm text-muted-foreground"
+          >
+            <span>✓ Free to start</span>
+            <span>✓ No credit card</span>
+            <span>✓ Cancel anytime</span>
+            <span>✓ Premium optional</span>
+          </motion.div>
         </motion.div>
       </div>
     </section>
