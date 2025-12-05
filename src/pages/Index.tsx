@@ -1,11 +1,15 @@
 import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
-import WhySection from "@/components/landing/WhySection";
 import JourneySection from "@/components/landing/JourneySection";
 import GamificationSection from "@/components/landing/GamificationSection";
+import DetailedFeaturesSection from "@/components/landing/DetailedFeaturesSection";
+import WhySection from "@/components/landing/WhySection";
+import OnboardingFlowSection from "@/components/landing/OnboardingFlowSection";
+import DownloadSection from "@/components/landing/DownloadSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
+import ScrollToTop from "@/components/landing/ScrollToTop";
 
 const Index = () => {
   return (
@@ -13,11 +17,15 @@ const Index = () => {
       <Header />
       <HeroSection />
       <FeaturesSection />
-      <WhySection />
       <JourneySection />
       <GamificationSection />
+      <DetailedFeaturesSection />
+      <WhySection />
+      <OnboardingFlowSection />
+      <DownloadSection />
       <CTASection />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 };
