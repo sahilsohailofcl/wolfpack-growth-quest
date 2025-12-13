@@ -6,6 +6,8 @@ import GamificationSection from "@/components/landing/GamificationSection";
 import DetailedFeaturesSection from "@/components/landing/DetailedFeaturesSection";
 import WhySection from "@/components/landing/WhySection";
 import OnboardingFlowSection from "@/components/landing/OnboardingFlowSection";
+import TestimonialsSection from "@/components/landing/TestimonialsSection";
+import PricingSection from "@/components/landing/PricingSection";
 import DownloadSection from "@/components/landing/DownloadSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
@@ -22,6 +24,8 @@ const Index = () => {
       <DetailedFeaturesSection />
       <WhySection />
       <OnboardingFlowSection />
+      <TestimonialsSection />
+      <PricingSection />
       <DownloadSection />
       <CTASection />
       <Footer />
