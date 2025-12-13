@@ -1,53 +1,104 @@
 import { motion } from "framer-motion";
 import { Flame, Twitter, Instagram, Github } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const footerLinks = {
+  product: [
+    { label: "Features", href: "/features" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Download", href: "/#download" },
+  ],
+  company: [
+    { label: "About", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact" },
+  ],
+  legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+  ],
+};
 
 const Footer = () => {
   return (
-    <footer className="bg-brown-dark py-12">
+    <footer className="bg-brown-dark py-16">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center text-center"
-        >
-          {/* Logo */}
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center">
-              <Flame className="w-4 h-4 text-primary-foreground" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center">
+                <Flame className="w-4 h-4 text-primary-foreground" />
+              </div>
+              <span className="font-bold text-lg text-cream-light">Foclupus</span>
+            </Link>
+            <p className="text-cream/60 text-sm mb-6 max-w-xs">
+              Turn screen time into growth time. Join the pack and master your focus with gamified productivity.
+            </p>
+            <div className="flex items-center gap-3">
+              {[Twitter, Instagram, Github].map((Icon, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  whileHover={{ scale: 1.1 }}
+                  className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center text-cream/60 hover:text-cream hover:bg-cream/20 transition-colors"
+                >
+                  <Icon className="w-5 h-5" />
+                </motion.a>
+              ))}
             </div>
-            <span className="font-bold text-lg text-cream-light">Foclupus</span>
           </div>
 
-          <p className="text-cream/60 text-sm mb-6">The Focused Wolf</p>
-
-          {/* Social links */}
-          <div className="flex items-center gap-4 mb-8">
-            {[Twitter, Instagram, Github].map((Icon, index) => (
-              <motion.a
-                key={index}
-                href="#"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center text-cream/60 hover:text-cream hover:bg-cream/20 transition-colors"
-              >
-                <Icon className="w-5 h-5" />
-              </motion.a>
-            ))}
+          {/* Product */}
+          <div>
+            <h4 className="font-bold text-cream-light mb-4">Product</h4>
+            <ul className="space-y-2">
+              {footerLinks.product.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className="text-sm text-cream/60 hover:text-cream transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-cream/50 mb-8">
-            <a href="#" className="hover:text-cream transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-cream transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-cream transition-colors">Contact</a>
+          {/* Company */}
+          <div>
+            <h4 className="font-bold text-cream-light mb-4">Company</h4>
+            <ul className="space-y-2">
+              {footerLinks.company.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className="text-sm text-cream/60 hover:text-cream transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Copyright */}
-          <p className="text-cream/40 text-xs">
-            © 2025 Foclupus. Turn screen time into growth time. 🐺
+          {/* Legal */}
+          <div>
+            <h4 className="font-bold text-cream-light mb-4">Legal</h4>
+            <ul className="space-y-2">
+              {footerLinks.legal.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className="text-sm text-cream/60 hover:text-cream transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-cream/10 pt-8 text-center">
+          <p className="text-cream/40 text-sm">
+            © 2025 Foclupus. Made with ❤️ for focused wolves everywhere. 🐺
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
