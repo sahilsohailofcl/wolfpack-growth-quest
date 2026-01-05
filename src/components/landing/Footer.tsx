@@ -1,104 +1,84 @@
 import { motion } from "framer-motion";
-import { Flame, Twitter, Instagram, Github } from "lucide-react";
-import { Link } from "react-router-dom";
-
-const footerLinks = {
-  product: [
-    { label: "Features", href: "/features" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Download", href: "/#download" },
-  ],
-  company: [
-    { label: "About", href: "/about" },
-    { label: "Blog", href: "/blog" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-  ],
-};
+import { Sparkles, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-brown-dark py-16">
+    <footer className="py-12 md:py-16 border-t border-border/50 bg-secondary/20">
       <div className="container">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center">
-                <Flame className="w-4 h-4 text-primary-foreground" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center md:items-start gap-3"
+          >
+            <a href="#" className="flex items-center gap-2 group">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center transition-transform group-hover:scale-110">
+                <Sparkles className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-bold text-lg text-cream-light">Foclupus</span>
-            </Link>
-            <p className="text-cream/60 text-sm mb-6 max-w-xs">
-              Turn screen time into growth time. Join the pack and master your focus with gamified productivity.
+              <span className="font-bold text-lg text-foreground">Foclupus</span>
+            </a>
+            <p className="text-sm text-muted-foreground text-center md:text-left">
+              Simple progress. Real results.
             </p>
-            <div className="flex items-center gap-3">
-              {[Twitter, Instagram, Github].map((Icon, index) => (
-                <motion.a
-                  key={index}
-                  href="#"
-                  whileHover={{ scale: 1.1 }}
-                  className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center text-cream/60 hover:text-cream hover:bg-cream/20 transition-colors"
-                >
-                  <Icon className="w-5 h-5" />
-                </motion.a>
-              ))}
-            </div>
-          </div>
+          </motion.div>
 
-          {/* Product */}
-          <div>
-            <h4 className="font-bold text-cream-light mb-4">Product</h4>
-            <ul className="space-y-2">
-              {footerLinks.product.map((link) => (
-                <li key={link.href}>
-                  <Link to={link.href} className="text-sm text-cream/60 hover:text-cream transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground"
+          >
+            <a href="#" className="hover:text-foreground transition-colors">
+              Feedback
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Terms & Conditions
+            </a>
+          </motion.div>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-bold text-cream-light mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link to={link.href} className="text-sm text-cream/60 hover:text-cream transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-bold text-cream-light mb-4">Legal</h4>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link to={link.href} className="text-sm text-cream/60 hover:text-cream transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Social */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex items-center gap-3"
+          >
+            {[Twitter, Instagram, Linkedin].map((Icon, index) => (
+              <motion.a
+                key={index}
+                href="#"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+              >
+                <Icon className="w-5 h-5" />
+              </motion.a>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-cream/10 pt-8 text-center">
-          <p className="text-cream/40 text-sm">
-            © 2025 Foclupus. Made with ❤️ for focused wolves everywhere. 🐺
+        {/* Copyright */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-10 pt-6 border-t border-border/30 text-center"
+        >
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} Foclupus. Made with ❤️ for focused minds.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

@@ -1,7 +1,6 @@
 import Header from "@/components/landing/Header";
 import Footer from "@/components/landing/Footer";
 import ScrollToTop from "@/components/landing/ScrollToTop";
-import PricingSection from "@/components/landing/PricingSection";
 import { motion } from "framer-motion";
 
 const faqs = [
@@ -11,7 +10,7 @@ const faqs = [
   },
   {
     q: "What happens when I cancel?",
-    a: "You keep access until the end of your billing period. Your progress, XP, and rank are saved if you decide to return.",
+    a: "You keep access until the end of your billing period. Your progress and data are saved if you decide to return.",
   },
   {
     q: "Is there a student discount?",
@@ -28,12 +27,28 @@ const Pricing = () => {
     <main className="min-h-screen">
       <Header />
       
-      <div className="pt-16">
-        <PricingSection />
-      </div>
+      <section className="pt-32 pb-20">
+        <div className="container text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+          >
+            Pricing
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-muted-foreground mb-16"
+          >
+            Simple, transparent pricing for everyone
+          </motion.p>
+        </div>
+      </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-secondary/30">
         <div className="container max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
